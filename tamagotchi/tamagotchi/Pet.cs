@@ -17,7 +17,7 @@ namespace tamagotchi
         public int Boredom { get; private set; }
         public List<string> Words => words;
         public string Name { get; }
-        public bool IsAlive { get => this.Hunger > 10 || this.Boredom > 10; }
+        public bool IsAlive { get => !(this.Hunger > 10 || this.Boredom > 10); }
 
         public void Feed()
         {

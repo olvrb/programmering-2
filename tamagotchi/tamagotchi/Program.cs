@@ -7,8 +7,14 @@ namespace tamagotchi
         static void Main(string[] args)
         {
             Pet pet = CreatePet();
-            while (true)
+            while (pet.IsAlive)
             {
+                (int hunger, int boredom) = pet.GetStats();
+                Console.WriteLine($@"
+Name: {pet.Name}
+Boredom: {boredom}
+Hunger: {hunger}
+");
                 switch (Console.ReadLine())
                 {
                     case "feed": pet.Feed(); break;
@@ -20,6 +26,7 @@ namespace tamagotchi
                         continue;
                 }
                 pet.Tick();
+                Console.Clear();
             }
         }
 
