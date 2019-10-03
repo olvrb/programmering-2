@@ -16,9 +16,6 @@ namespace du_ska_va_president
                 Console.Write("Name your president: ");
                 countries.Add(new Country(new President(Console.ReadLine()), 24.5m, 50.2m));
             }
-            
-            Console.WriteLine("Hello World!");
-            Console.ReadLine();
         }
     }
 }
