@@ -12,7 +12,7 @@ namespace prov1
         // The amount of money a customer has is 
 
         // Could be useful... maybe?
-        private Dictionary<string, decimal> Receipts = new Dictionary<string, decimal>();
+        private Dictionary<Book, decimal> Receipts = new Dictionary<Book, decimal>();
         private decimal money;
         public void BuyBook(Book book)
         {
@@ -22,7 +22,7 @@ namespace prov1
                 // Spend the money.
                 money -= book.Price;
 
-                Receipts.Add(book.GetName(), book.Price);
+                Receipts.Add(book, book.Price);
             }
         }
         public void ReturnBook(Book book)
@@ -30,8 +30,8 @@ namespace prov1
             // Refund the money.
             money += book.Price;
 
-            // Undefined behaviour if the customer has purchased multiple books with the same title.
-            Receipts.Remove(book.GetName());
+            // ~~Undefined behaviour if the customer has purchased multiple books with the same title.~~ Nevermind.
+            Receipts.Remove(book);
         } 
     }
 }

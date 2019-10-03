@@ -7,6 +7,7 @@ namespace prov1
     class Book
     {
         public decimal Price;
+
         private string name;
         private decimal rarity;
         private string category;
@@ -39,11 +40,11 @@ namespace prov1
         }
         public void PrintInfo()
         {
-            Console.WriteLine($@"
-Name: {this.name}
+            Console.WriteLine($@"Name: {this.name}
 Rarity: {this.rarity}
 Category: {this.category}
-Price: {this.Price}");
+Price: {this.Price}
+");
         }
         public decimal Evaluate()
         {
@@ -51,18 +52,13 @@ Price: {this.Price}");
             return ((decimal)generator.Next(50, 150) / 100) * price;
         }
 
-        public string GetCategory()
-        {
-            return this.category;
-        }
+        public string Category => this.category;
 
-        public string GetName()
-        {
-            return this.name;
-        }
+        public string GetName() => this.name;
 
         public bool IsCursed()
         {
+            // 80% chance of being the same, 20% of being the opposite.
             if (generator.Next(0, 100) > 80)
             {
                 return this.cursed;

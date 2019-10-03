@@ -13,16 +13,17 @@ namespace prov1
                 // Rather than nesting ifs... or creating methods. Recursion!
                 // Default is no.
                 Console.Write("Buy book? (y/N): ");
-                string inp = Console.ReadLine().ToLower();
+                string strInput = Console.ReadLine().ToLower();
 
-                if (inp.Length == 0) shouldContinue = false;
+                if (strInput.Length == 0) shouldContinue = false;
                 else
                 {
-                    char c = inp[0];
+                    char charInput = strInput[0];
 
 
-                    if (c == 'y')
+                    if (charInput == 'y')
                     {
+                        // Create new book and show the customer.
                         Book book = new Book();
                         Console.WriteLine($"Here is book: ");
                         book.PrintInfo();
