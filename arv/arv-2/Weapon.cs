@@ -14,7 +14,7 @@ namespace arv_2
         }
         public void PrintStats()
         {
-            
+
         }
     }
 }
