@@ -10,11 +10,13 @@ namespace api
     {
         static void Main(string[] args)
         {
-            RestClient client = new RestClient("https://pokeapi.co/api/v2/");
-            RestRequest request = new RestRequest("pokemon/ditto");
-            IRestResponse response = client.Get(request);
-            Pokemon poki = JsonConvert.DeserializeObject<Pokemon>(response.Content);
-            Console.WriteLine(poki.name);
+            PokiClient client = new PokiClient();
+
+            Pokemon poki = client.GetPokemon("ditto");
+            Berry berry = client.GetBerry("1");
+            Contest contest = client.GetContest("1");
+            Console.WriteLine(berry.name);
+            Console.WriteLine(contest.name);
             Console.ReadLine();
         }
     }
