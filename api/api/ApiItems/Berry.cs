@@ -1,37 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace api
-{
-    public class Firmness
-    {
+namespace Api {
+    public class Firmness {
         public string name { get; set; }
         public string url { get; set; }
     }
 
-    public class Flavor2
-    {
+    public class Flavor2 {
         public string name { get; set; }
         public string url { get; set; }
     }
 
-    public class Flavor
-    {
+    public class Flavor {
         public Flavor2 flavor { get; set; }
         public int potency { get; set; }
     }
 
-    public class NaturalGiftType
-    {
+    public class NaturalGiftType {
         public string name { get; set; }
         public string url { get; set; }
     }
 
-    public class Berry
-    {
+    public class Berry {
         public Firmness firmness { get; set; }
         public List<Flavor> flavors { get; set; }
         public int growth_time { get; set; }

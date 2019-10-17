@@ -1,33 +1,43 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace api
-{
-    class PokiClient
-    {
-        private RestClient client;
-        public PokiClient()
-        {
-            client = new RestClient("https://pokeapi.co/api/v2");
-        }
+namespace Api {
+    internal class PokiClient {
+        private readonly RestClient client;
 
+        public PokiClient() => client = new RestClient("https://pokeapi.co/api/v2");
+
+        /// <summary>
+        ///     Get pokemon by name or Id.
+        /// </summary>
+        /// <param name="nameOrId"></param>
+        /// <returns></returns>
         public Pokemon GetPokemon(string nameOrId) => GetFrom<Pokemon>($"pokemon/{nameOrId}");
 
+        /// <summary>
+        ///     Get Berry by name or Id.
+        /// </summary>
+        /// <param name="nameOrId"></param>
+        /// <returns></returns>
         public Berry GetBerry(string nameOrId) => GetFrom<Berry>($"berry/{nameOrId}");
 
+        /// <summary>
+        ///     Get contest by name or Id.
+        /// </summary>
+        /// <param name="nameOrId"></param>
+        /// <returns></returns>
         public Contest GetContest(string nameOrId) => GetFrom<Contest>($"contest-type/{nameOrId}");
 
-        private T GetFrom<T>(string req)
-        {
-            RestRequest request = new RestRequest(req);
+        /// <summary>
+        ///     Submit GET request to resource.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource"></param>
+        /// <returns></returns>
+        private T GetFrom<T>(string resource) {
+            RestRequest request = new RestRequest(resource);
             IRestResponse response = client.Get(request);
             return JsonConvert.DeserializeObject<T>(response.Content);
         }
-        
     }
 }
