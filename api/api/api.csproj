@@ -50,9 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Berry.cs" />
-    <Compile Include="Contest.cs" />
-    <Compile Include="Pokemon.cs" />
+    <Compile Include="ApiItems\Berry.cs" />
+    <Compile Include="ApiItems\Contest.cs" />
+    <Compile Include="ApiItems\Encounter.cs" />
+    <Compile Include="ApiItems\Pokemon.cs" />
     <Compile Include="PokiClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

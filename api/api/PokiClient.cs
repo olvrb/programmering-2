@@ -16,32 +16,18 @@ namespace api
             client = new RestClient("https://pokeapi.co/api/v2");
         }
 
-        public Pokemon GetPokemon(string pokemon)
-        {
+        public Pokemon GetPokemon(string nameOrId) => GetFrom<Pokemon>($"pokemon/{nameOrId}");
 
-            Pokemon poki = JsonConvert.DeserializeObject<Pokemon>(GetFrom($"pokemon/{pokemon}"));
+        public Berry GetBerry(string nameOrId) => GetFrom<Berry>($"berry/{nameOrId}");
 
-            return poki;
-        }
+        public Contest GetContest(string nameOrId) => GetFrom<Contest>($"contest-type/{nameOrId}");
 
-        public Berry GetBerry(string nameOrId)
-        {
-
-            Berry berry = JsonConvert.DeserializeObject<Berry>(GetFrom($"berry/{nameOrId}"));
-            return berry;
-        }
-
-        public Contest GetContest(string nameOrId)
-        {
-            Contest contest = JsonConvert.DeserializeObject<Contest>(GetFrom($"contest-type/{nameOrId}"));
-            return contest;
-        }
-
-        private string GetFrom(string req)
+        private T GetFrom<T>(string req)
         {
             RestRequest request = new RestRequest(req);
             IRestResponse response = client.Get(request);
-            return response.Content;
+            return JsonConvert.DeserializeObject<T>(response.Content);
         }
+        
     }
 }
