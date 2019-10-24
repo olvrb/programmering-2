@@ -6,8 +6,8 @@ namespace arv
 {
     class Block
     {
-        protected int x;
-        protected int y;
+        public int x;
+        public int y;
         protected bool fallThrough;
     }
 }
