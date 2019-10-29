@@ -6,7 +6,8 @@ using System.Runtime.Caching;
 using System.Security.AccessControl;
 
 namespace Api {
-    internal class PokiClient {
+    internal class PokiClient
+    {
         private readonly RestClient client;
         private static ObjectCache cache;
 
@@ -17,6 +18,7 @@ namespace Api {
             cache = MemoryCache.Default;
         }
 
+        // Custom get method, in case user wants to get using a model which isn't built-in.
         public T Get<T>(string resource) {
             return GetFrom<T>(resource);
         }
@@ -65,10 +67,12 @@ namespace Api {
         }
 
         private static void SetCache<T>(string key, T value) {
+            // Prepare cache item for caching.
             CacheItem item = new CacheItem(key, value);
+            // Generate policy based on API.
             CacheItemPolicy policy = new CacheItemPolicy
             {
-                AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(5.0)
+                AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60)
             };
 
             cache.AddOrGetExisting(item, policy);
