@@ -18,11 +18,18 @@ namespace netflix
             InitializeComponent();
         }
 
+        // Helper for the current selected title
+        private Title selectedTitle => library.GetTitleByName((string)titles_listBox.Items[titles_listBox.SelectedIndex]);
+        // Helper for the current selected season
+        private Season selectedSeason => ((Show)selectedTitle).GetSeasonByNumber(seasons_listBox.SelectedIndex);
+
+
         private Library library = new Library();
 
+        // Populate database for demo
         private void PopulateDatabase()
         {
-            library.AddTitle(new Show("Brooklyn Nine Nine", new List<Rating> { new Rating(10) }, new Bitmap(1024, 1024), new List<Season> { new Season(new List<Episode> { new Episode(10) }) }));
+            library.Populate();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -36,15 +43,56 @@ namespace netflix
 
         private void Titles_listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string name = (string)titles_listBox.Items[titles_listBox.SelectedIndex];
-            Title selectedTitle = library.GetTitleByName(name);
+            if (titles_listBox.SelectedIndex == -1) return;
+
+            // Dispose of previous info
+            info_box.Clear();
+            seasons_listBox.Items.Clear();
+
+            updateTitles();
+        }
+
+        private void Seasons_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (seasons_listBox.SelectedIndex == -1) return;
+
+            episodes_listBox.Items.Clear();
+
+            updateEpisodes();
+        }
+
+        private void updateTitles()
+        {
             bool isShow = selectedTitle is Show;
+
+            pictureBox1.Image = selectedTitle.Poster;
 
             info_box.Text += $"Name: {selectedTitle.Name}\n";
             info_box.Text += $"Average Rating: {selectedTitle.AverageRating}\n";
+
             if (isShow)
             {
                 info_box.Text += $"Amount of seasons: {((Show)selectedTitle).Seasons.Count}\n";
+                updateSeasons();
+            }
+        }
+
+        private void updateSeasons()
+        {
+            // Add all seasons of the selected Show to listbox
+            for (int i = 0; i < ((Show)selectedTitle).Seasons.Count; i++)
+            {
+                // +1 becomes season 0 is not a thing.
+                seasons_listBox.Items.Add(i + 1);
+            }
+        } 
+
+        private void updateEpisodes()
+        {
+            // Add all episodes of selected season to listbox
+            foreach (var episode in selectedSeason.Episodes)
+            {
+                episodes_listBox.Items.Add(episode.Name);
             }
         }
     }

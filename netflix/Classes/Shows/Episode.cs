@@ -8,11 +8,15 @@ namespace netflix.Classes
 {
     public class Episode
     {
-        public Episode(int length)
+        public Episode(string name, string description, int length)
         {
             this.Length = length;
+            this.Name = name;
+            this.Description = description;
         }
 
         public int Length { get; }
+        public string Name { get; }
+        public string Description { get; }
     }
 }
