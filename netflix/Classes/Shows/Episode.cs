@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace netflix.Classes
-{
-    public class Episode
-    {
-        public Episode(string name, string description, int length)
-        {
-            this.Length = length;
-            this.Name = name;
-            this.Description = description;
+﻿namespace netflix.Classes.Shows {
+    public class Episode {
+        public Episode(string name, string description, int length) {
+            Length = length;
+            Name = name;
+            Description = description;
         }
 
         public int Length { get; }
