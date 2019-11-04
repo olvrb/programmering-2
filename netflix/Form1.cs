@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using netflix.Classes;
 using netflix.Classes.Shows;
@@ -12,11 +13,11 @@ namespace netflix {
         }
 
         // Helper for the current selected title
-        private Title selectedTitle =>
+        private Title SelectedTitle =>
             library.GetTitleByName((string) titles_listBox.Items[titles_listBox.SelectedIndex]);
 
         // Helper for the current selected season
-        private Season selectedSeason => ((Show) selectedTitle).GetSeasonByNumber(seasons_listBox.SelectedIndex);
+        private Season SelectedSeason => ((Show) SelectedTitle).GetSeasonByNumber(seasons_listBox.SelectedIndex);
 
         // Populate database for demo
         private void PopulateDatabase() {
@@ -40,7 +41,7 @@ namespace netflix {
             info_box.Clear();
             seasons_listBox.Items.Clear();
 
-            updateTitles();
+            UpdateTitles();
         }
 
         private void Seasons_listBox_SelectedIndexChanged(object sender, EventArgs e) {
@@ -50,35 +51,57 @@ namespace netflix {
 
             episodes_listBox.Items.Clear();
 
-            updateEpisodes();
+            UpdateEpisodes();
         }
 
-        private void updateTitles() {
-            bool isShow = selectedTitle is Show;
+        private void UpdateTitles() {
+            bool isShow = SelectedTitle is Show;
 
-            pictureBox1.Image = selectedTitle.Poster;
+            pictureBox1.Image = SelectedTitle.Poster;
 
-            info_box.Text += $"Name: {selectedTitle.Name}\n";
-            info_box.Text += $"Average Rating: {selectedTitle.AverageRating}\n";
+            info_box.Text += $"Name: {SelectedTitle.Name}\n";
+            info_box.Text += $"Average Rating: {SelectedTitle.AverageRating}\n";
+            info_box.Text += $"Description: {SelectedTitle.Description}";
 
             if (isShow) {
-                info_box.Text += $"Amount of seasons: {((Show) selectedTitle).Seasons.Count}\n";
-                updateSeasons();
+                info_box.Text += $"Amount of seasons: {((Show) SelectedTitle).Seasons.Count}\n";
+                UpdateSeasons();
             }
         }
 
-        private void updateSeasons() {
+        private void UpdateSeasons() {
             // Add all seasons of the selected Show to listbox
-            for (int i = 0; i < ((Show) selectedTitle).Seasons.Count; i++) {
-                // +1 becomes season 0 is not a thing.
+            for (int i = 0; i < ((Show) SelectedTitle).Seasons.Count; i++) {
+                // +1 becomes season 0 is not a thing
                 seasons_listBox.Items.Add(i + 1);
             }
         }
 
-        private void updateEpisodes() {
+        private void UpdateEpisodes() {
             // Add all episodes of selected season to listbox
-            foreach (Episode episode in selectedSeason.Episodes) {
+            foreach (Episode episode in SelectedSeason.Episodes) {
                 episodes_listBox.Items.Add(episode.Name);
+            }
+        }
+
+        private void UpdateTitleList() {
+            titles_listBox.Items.Clear();
+            foreach (Title title in library.GetTitles()) {
+                titles_listBox.Items.Add(title.Name);
+            }
+        }
+
+        private void AddTitle_Click(object sender, EventArgs e)
+        {
+            AddTitleDialog testDialog = new AddTitleDialog();
+            if (testDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                testDialog.Close();
+                // Don't freeze the UI thread
+                Task.Run(() => {
+                    library.AddTitleByName(testDialog.input.Text);
+                    Invoke(new MethodInvoker(UpdateTitleList));
+                });
             }
         }
     }

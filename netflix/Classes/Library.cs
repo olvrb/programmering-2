@@ -6,6 +6,7 @@ using System.Net;
 using netflix.Classes.Movies;
 using netflix.Classes.Shows;
 
+
 namespace netflix.Classes {
     public class Library {
         private List<Title> Titles { get; } = new List<Title>();
@@ -18,6 +19,12 @@ namespace netflix.Classes {
             Titles.Add(title);
         }
 
+        public void AddTitleByName(string name) {
+            UnogsClient.UnogsClient client = new UnogsClient.UnogsClient();
+            var item = client.GetTitleByName(name);
+            Title title = new Title(item.title, new List<Rating> {  }, ImageFromUrl(item.image), item.synopsis);
+            AddTitle(title);
+        }
         public List<Title> GetTitles() => Titles;
 
         public void Populate() {

@@ -2,8 +2,10 @@
 
 namespace netflix.Classes.Shows {
     public class Season {
-        public Season(List<Episode> episodes) => Episodes = episodes;
+        public Season(List<Episode> episodes) => this.episodes = episodes;
 
-        public List<Episode> Episodes { get; protected set; }
+        private readonly List<Episode> episodes;
+
+        public IReadOnlyList<Episode> Episodes => episodes.AsReadOnly();
     }
 }

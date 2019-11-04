@@ -36,6 +36,7 @@
             this.seasons_title = new System.Windows.Forms.RichTextBox();
             this.episodes_title = new System.Windows.Forms.RichTextBox();
             this.titles_title = new System.Windows.Forms.RichTextBox();
+            this.addTitle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@
             this.titles_listBox.FormattingEnabled = true;
             this.titles_listBox.Location = new System.Drawing.Point(12, 38);
             this.titles_listBox.Name = "titles_listBox";
-            this.titles_listBox.Size = new System.Drawing.Size(149, 394);
+            this.titles_listBox.Size = new System.Drawing.Size(149, 381);
             this.titles_listBox.TabIndex = 0;
             this.titles_listBox.SelectedIndexChanged += new System.EventHandler(this.Titles_listBox_SelectedIndexChanged);
             // 
@@ -58,7 +59,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(628, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(628, 198);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(160, 240);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -110,11 +111,22 @@
             this.titles_title.Tag = "";
             this.titles_title.Text = "Library";
             // 
+            // addTitle
+            // 
+            this.addTitle.Location = new System.Drawing.Point(12, 425);
+            this.addTitle.Name = "addTitle";
+            this.addTitle.Size = new System.Drawing.Size(149, 23);
+            this.addTitle.TabIndex = 8;
+            this.addTitle.Text = "Add title";
+            this.addTitle.UseVisualStyleBackColor = true;
+            this.addTitle.Click += new System.EventHandler(this.AddTitle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.addTitle);
             this.Controls.Add(this.titles_title);
             this.Controls.Add(this.episodes_title);
             this.Controls.Add(this.seasons_title);
@@ -141,6 +153,7 @@
         private System.Windows.Forms.RichTextBox seasons_title;
         private System.Windows.Forms.RichTextBox episodes_title;
         private System.Windows.Forms.RichTextBox titles_title;
+        private System.Windows.Forms.Button addTitle;
     }
 }
 

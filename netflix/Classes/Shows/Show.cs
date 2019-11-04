@@ -5,12 +5,14 @@ namespace netflix.Classes.Shows {
     public class Show : Title {
         public Show(string name, List<Rating> ratings, Image image, List<Season> seasons) : base(name, ratings, image) {
             Name = name;
-            Ratings = ratings;
+            this.ratings = ratings;
             Poster = image;
-            Seasons = seasons;
+            this.seasons = seasons;
         }
 
-        public List<Season> Seasons { get; protected set; } = new List<Season>();
+        private readonly List<Season> seasons;
+
+        public IReadOnlyList<Season> Seasons => seasons.AsReadOnly();
 
         public Season GetSeasonByNumber(int num) => Seasons[num];
     }
