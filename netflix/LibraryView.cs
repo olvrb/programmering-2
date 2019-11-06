@@ -5,10 +5,10 @@ using netflix.Classes;
 using netflix.Classes.Shows;
 
 namespace netflix {
-    public partial class Form1 : Form {
+    public partial class LibraryView : Form {
         private readonly Library library = new Library();
 
-        public Form1() {
+        public LibraryView() {
             InitializeComponent();
         }
 
@@ -27,7 +27,7 @@ namespace netflix {
         private void Form1_Load(object sender, EventArgs e) {
             PopulateDatabase();
 
-            foreach (Title title in library.GetTitles()) {
+            foreach (Title title in library) {
                 titles_listBox.Items.Add(title.Name);
             }
         }
@@ -86,7 +86,7 @@ namespace netflix {
 
         private void UpdateTitleList() {
             titles_listBox.Items.Clear();
-            foreach (Title title in library.GetTitles()) {
+            foreach (Title title in library) {
                 titles_listBox.Items.Add(title.Name);
             }
         }
@@ -99,10 +99,15 @@ namespace netflix {
                 testDialog.Close();
                 // Don't freeze the UI thread
                 Task.Run(() => {
-                    library.AddTitleByName(testDialog.input.Text);
+                    library.AddTitle(new Title(testDialog.input.Text));
                     Invoke(new MethodInvoker(UpdateTitleList));
                 });
             }
+        }
+
+        private void Titles_title_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -7,18 +7,39 @@ namespace UnogsClient
 {
     public class ApiItem
     {
-        public string netflixid { get; set; }
-        public string title { get; set; }
-        public string image { get; set; }
-        public string synopsis { get; set; }
-        public string rating { get; set; }
-        public string type { get; set; }
-        public string released { get; set; }
-        public string runtime { get; set; }
-        public string largeimage { get; set; }
-        public string unogsdate { get; set; }
-        public string imdbid { get; set; }
-        public string download { get; set; }
+        [JsonProperty("netflixid")]
+        public string NetflixId { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("image")]
+        public string Image { get; set; }
+
+        [JsonProperty("synopsis")]
+        public string Synopsis { get; set; }
+
+        [JsonProperty("rating")]
+        public string Rating { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("released")]
+        public string Released { get; set; }
+
+        [JsonProperty("runtime")]
+        public string Runtime { get; set; }
+
+        [JsonProperty("largeimage")]
+        public string LargeImage { get; set; }
+        [JsonProperty("unogsdate")]
+        public string UnogsDate { get; set; }
+
+        [JsonProperty("imdbid")]
+        public string ImdbId { get; set; }
+        [JsonProperty("download")]
+        public string Download { get; set; }
     }
 
     public class ApiResponse

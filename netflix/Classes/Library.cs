@@ -5,31 +5,28 @@ using System.Linq;
 using System.Net;
 using netflix.Classes.Movies;
 using netflix.Classes.Shows;
+using UnogsClient;
 
 
-namespace netflix.Classes {
-    public class Library {
-        private List<Title> Titles { get; } = new List<Title>();
+namespace netflix.Classes
+{
+    public class Library : List<Title>
+    {
 
-        public Title GetTitleByName(string name) {
-            return Titles.First(x => x.Name == name);
+        public Title GetTitleByName(string name)
+        {
+            return this.First(x => x.Name == name);
+        }
+            
+        public void AddTitle(Title title)
+        {
+            this.Add(title);
         }
 
-        public void AddTitle(Title title) {
-            Titles.Add(title);
-        }
-
-        public void AddTitleByName(string name) {
-            UnogsClient.UnogsClient client = new UnogsClient.UnogsClient();
-            var item = client.GetTitleByName(name);
-            Title title = new Title(item.title, new List<Rating> {  }, ImageFromUrl(item.image), item.synopsis);
-            AddTitle(title);
-        }
-        public List<Title> GetTitles() => Titles;
-
-        public void Populate() {
+        public void Populate()
+        {
             AddTitle(new Show("Brooklyn Nine Nine",
-                new List<Rating> {new Rating(10)},
+                new List<Rating> { new Rating(10) },
                 ImageFromUrl(
                     "https://m.media-amazon.com/images/M/MV5BMGU3NGYyYTYtYjIzMS00ZmUwLTlmMjAtZDhhMzFiNWI0NzNkXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_.jpg"),
                 new List<Season> {
@@ -40,13 +37,14 @@ namespace netflix.Classes {
                     })
                 }));
             AddTitle(new Movie("How the Grinch Stole Christmas",
-                new List<Rating> {new Rating(10)},
+                new List<Rating> { new Rating(10) },
                 ImageFromUrl(
                     "http://t3.gstatic.com/images?q=tbn:ANd9GcT-oosslYzD61pdLgPVmjN53hdzb-bjBeJajr2UILlq7kQNz7jR"),
                 100));
         }
 
-        private Image ImageFromUrl(string url) {
+        public static Image ImageFromUrl(string url)
+        {
             WebClient wc = new WebClient();
             byte[] bytes = wc.DownloadData(url);
             MemoryStream ms = new MemoryStream(bytes);

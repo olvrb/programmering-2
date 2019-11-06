@@ -58,7 +58,7 @@
             this.Controls.Add(this.submit);
             this.Controls.Add(this.input);
             this.Name = "AddTitleDialog";
-            this.Text = "AddTitleDialog";
+            this.Text = "Add Title";
             this.Load += new System.EventHandler(this.AddTitleDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

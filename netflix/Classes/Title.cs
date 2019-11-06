@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using UnogsClient;
 
 namespace netflix.Classes {
     public class Title {
@@ -9,6 +10,15 @@ namespace netflix.Classes {
             this.ratings = ratings;
             Poster = image;
             Description = description;
+        }
+
+        public Title(string name) {
+            UnogsClient.UnogsClient client = new UnogsClient.UnogsClient();
+            ApiItem item = client.GetTitleByName(name);
+            Name = item.Title;
+            ratings = new List<Rating>();
+            Poster = Library.ImageFromUrl(item.Image);
+            Description = item.Synopsis;
         }
 
         public string Description { get; protected set; }
