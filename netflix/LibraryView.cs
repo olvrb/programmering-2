@@ -61,7 +61,8 @@ namespace netflix {
 
             info_box.Text += $"Name: {SelectedTitle.Name}\n";
             info_box.Text += $"Average Rating: {SelectedTitle.AverageRating}\n";
-            info_box.Text += $"Description: {SelectedTitle.Description}";
+            info_box.Text += $"Description: {SelectedTitle.Description}\n";
+            info_box.Text += $"Link: https://netflix.com/watch/{SelectedTitle.NetflixId}\n";
 
             if (isShow) {
                 info_box.Text += $"Amount of seasons: {((Show) SelectedTitle).Seasons.Count}\n";
@@ -108,6 +109,10 @@ namespace netflix {
         private void Titles_title_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Info_box_LinkClicked(object sender, LinkClickedEventArgs e) {
+            System.Diagnostics.Process.Start(e.LinkText);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace netflix.Classes {
             this.ratings = ratings;
             Poster = image;
             Description = description;
+            NetflixId = null;
         }
 
         public Title(string name) {
@@ -18,12 +19,14 @@ namespace netflix.Classes {
             Name = item.Title;
             ratings = new List<Rating> { new Rating(decimal.Parse(item.Rating)) };
             Poster = Library.ImageFromUrl(item.Image);
+            NetflixId = item.NetflixId;
             Description = item.Synopsis;
         }
 
         public string Description { get; protected set; }
         public string Name { get; protected set; }
         public Image Poster { get; protected set; }
+        public string NetflixId { get; protected set; }
         protected List<Rating> ratings;
 
         public IReadOnlyList<Rating> Ratings => ratings.AsReadOnly();

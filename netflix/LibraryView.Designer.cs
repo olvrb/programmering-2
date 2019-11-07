@@ -56,6 +56,7 @@
             this.info_box.Size = new System.Drawing.Size(346, 426);
             this.info_box.TabIndex = 1;
             this.info_box.Text = "";
+            this.info_box.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.Info_box_LinkClicked);
             // 
             // pictureBox1
             // 
