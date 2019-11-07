@@ -16,7 +16,7 @@ namespace netflix.Classes {
             UnogsClient.UnogsClient client = new UnogsClient.UnogsClient();
             ApiItem item = client.GetTitleByName(name);
             Name = item.Title;
-            ratings = new List<Rating>();
+            ratings = new List<Rating> { new Rating(decimal.Parse(item.Rating)) };
             Poster = Library.ImageFromUrl(item.Image);
             Description = item.Synopsis;
         }
@@ -28,7 +28,7 @@ namespace netflix.Classes {
 
         public IReadOnlyList<Rating> Ratings => ratings.AsReadOnly();
 
-        public double AverageRating => Ratings.Count > 0 ? Ratings.Average(x => x.Value) : 0;
+        public decimal AverageRating => Ratings.Count > 0 ? Ratings.Average(x => x.Value) : 0;
 
         public void AddRating(Rating rating) {
             ratings.Add(rating);

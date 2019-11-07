@@ -1,7 +1,7 @@
 ﻿namespace netflix.Classes {
     public class Rating {
-        public Rating(int value) => Value = value;
+        public Rating(decimal value) => Value = value;
 
-        public int Value { get; }
+        public decimal Value { get; }
     }
 }
