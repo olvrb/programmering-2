@@ -5,12 +5,12 @@ using UnogsClient;
 
 namespace netflix.Classes {
     public class Title {
-        public Title(string name, List<Rating> ratings, Image image, string description = "") {
+        public Title(string name, List<Rating> ratings, Image image, string description = "", string netflixId = "") {
             Name = name;
             this.ratings = ratings;
             Poster = image;
             Description = description;
-            NetflixId = null;
+            NetflixId = netflixId;
         }
 
         public Title(string name) {

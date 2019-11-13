@@ -106,11 +106,6 @@ namespace netflix {
             }
         }
 
-        private void Titles_title_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Info_box_LinkClicked(object sender, LinkClickedEventArgs e) {
             System.Diagnostics.Process.Start(e.LinkText);
         }

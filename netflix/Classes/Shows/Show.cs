@@ -3,10 +3,7 @@ using System.Drawing;
 
 namespace netflix.Classes.Shows {
     public class Show : Title {
-        public Show(string name, List<Rating> ratings, Image image, List<Season> seasons) : base(name, ratings, image) {
-            Name = name;
-            this.ratings = ratings;
-            Poster = image;
+        public Show(string name, List<Rating> ratings, Image image, List<Season> seasons, string description = "", string netflixId = "") : base(name, ratings, image, description, netflixId) {
             this.seasons = seasons;
         }
 

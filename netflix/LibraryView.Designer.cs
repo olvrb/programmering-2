@@ -115,7 +115,6 @@
             this.titles_title.TabIndex = 7;
             this.titles_title.Tag = "";
             this.titles_title.Text = "Library";
-            this.titles_title.TextChanged += new System.EventHandler(this.Titles_title_TextChanged);
             // 
             // addTitle
             // 

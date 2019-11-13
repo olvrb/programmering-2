@@ -35,7 +35,8 @@ namespace netflix.Classes
                             "Detective Jake Peralta is a talented, but carefree police detective at Brooklyn's ninety-ninth precinct who, along with his eclectic group of colleagues, are used to having a lax captain around the office. However, when tightly-wound Captain Ray Holt takes over, he is determined to make this dysfunctional group of detectives into the best precinct in Brooklyn.",
                             10)
                     })
-                }));
+                }, netflixId: "70281562")
+            );
             AddTitle(new Movie("How the Grinch Stole Christmas",
                 new List<Rating> { new Rating(10) },
                 ImageFromUrl(
