@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace UnogsClient
-{
-    public class ApiItem
-    {
+namespace UnogsClient {
+    public class ApiItem {
         [JsonProperty("netflixid")]
         public string NetflixId { get; set; }
 
@@ -33,19 +29,21 @@ namespace UnogsClient
 
         [JsonProperty("largeimage")]
         public string LargeImage { get; set; }
+
         [JsonProperty("unogsdate")]
         public string UnogsDate { get; set; }
 
         [JsonProperty("imdbid")]
         public string ImdbId { get; set; }
+
         [JsonProperty("download")]
         public string Download { get; set; }
     }
 
-    public class ApiResponse
-    { 
+    public class ApiResponse {
         [JsonProperty("COUNT")]
         public string Count { get; set; }
+
         [JsonProperty("ITEMS")]
         public List<ApiItem> Items { get; set; }
     }

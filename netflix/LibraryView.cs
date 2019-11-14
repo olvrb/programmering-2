@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using netflix.Classes;
@@ -92,11 +93,9 @@ namespace netflix {
             }
         }
 
-        private void AddTitle_Click(object sender, EventArgs e)
-        {
+        private void AddTitle_Click(object sender, EventArgs e) {
             AddTitleDialog testDialog = new AddTitleDialog();
-            if (testDialog.ShowDialog(this) == DialogResult.OK)
-            {
+            if (testDialog.ShowDialog(this) == DialogResult.OK) {
                 testDialog.Close();
                 // Don't freeze the UI thread
                 Task.Run(() => {
@@ -107,7 +106,7 @@ namespace netflix {
         }
 
         private void Info_box_LinkClicked(object sender, LinkClickedEventArgs e) {
-            System.Diagnostics.Process.Start(e.LinkText);
+            Process.Start(e.LinkText);
         }
     }
 }

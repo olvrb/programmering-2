@@ -5,6 +5,8 @@ using UnogsClient;
 
 namespace netflix.Classes {
     public class Title {
+        protected List<Rating> ratings;
+
         public Title(string name, List<Rating> ratings, Image image, string description = "", string netflixId = "") {
             Name = name;
             this.ratings = ratings;
@@ -17,7 +19,7 @@ namespace netflix.Classes {
             UnogsClient.UnogsClient client = new UnogsClient.UnogsClient();
             ApiItem item = client.GetTitleByName(name);
             Name = item.Title;
-            ratings = new List<Rating> { new Rating(decimal.Parse(item.Rating)) };
+            ratings = new List<Rating> {new Rating(decimal.Parse(item.Rating))};
             Poster = Library.ImageFromUrl(item.Image);
             NetflixId = item.NetflixId;
             Description = item.Synopsis;
@@ -27,7 +29,6 @@ namespace netflix.Classes {
         public string Name { get; protected set; }
         public Image Poster { get; protected set; }
         public string NetflixId { get; protected set; }
-        protected List<Rating> ratings;
 
         public IReadOnlyList<Rating> Ratings => ratings.AsReadOnly();
 

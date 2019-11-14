@@ -1,24 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace netflix
-{
-    public partial class AddTitleDialog : Form
-    {
-        public AddTitleDialog()
-        {
+namespace netflix {
+    public partial class AddTitleDialog : Form {
+        public AddTitleDialog() {
             InitializeComponent();
         }
 
         private void AddTitleDialog_Load(object sender, EventArgs e) {
-            this.ActiveControl = input;
+            ActiveControl = input;
         }
 
         private void Submit_Click(object sender, EventArgs e) {
