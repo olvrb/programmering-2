@@ -59,13 +59,13 @@
     <Compile Include="AddTitleDialog.Designer.cs">
       <DependentUpon>AddTitleDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Library.cs" />
-    <Compile Include="Classes\Shows\Episode.cs" />
-    <Compile Include="Classes\Movies\Movie.cs" />
-    <Compile Include="Classes\Rating.cs" />
-    <Compile Include="Classes\Shows\Season.cs" />
-    <Compile Include="Classes\Shows\Show.cs" />
-    <Compile Include="Classes\Title.cs" />
+    <Compile Include="Library.cs" />
+    <Compile Include="Elements\Shows\Episode.cs" />
+    <Compile Include="Elements\Movies\Movie.cs" />
+    <Compile Include="Elements\Rating.cs" />
+    <Compile Include="Elements\Shows\Season.cs" />
+    <Compile Include="Elements\Shows\Show.cs" />
+    <Compile Include="Elements\Title.cs" />
     <Compile Include="LibraryView.cs">
       <SubType>Form</SubType>
     </Compile>

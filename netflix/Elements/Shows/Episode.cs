@@ -1,4 +1,4 @@
-﻿namespace netflix.Classes.Shows {
+﻿namespace netflix.Elements.Shows {
     public class Episode {
         public Episode(string name, string description, int length) {
             Length = length;

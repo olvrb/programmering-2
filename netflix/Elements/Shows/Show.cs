@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-namespace netflix.Classes.Shows {
+namespace netflix.Elements.Shows {
     public class Show : Title {
         private readonly List<Season> seasons;
 

@@ -2,8 +2,8 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using netflix.Classes;
-using netflix.Classes.Shows;
+using netflix.Elements;
+using netflix.Elements.Shows;
 
 namespace netflix {
     public partial class LibraryView : Form {
@@ -20,7 +20,8 @@ namespace netflix {
         // Helper for the current selected season
         private Season SelectedSeason => ((Show) SelectedTitle).GetSeasonByNumber(seasons_listBox.SelectedIndex);
 
-        // Populate database for demo
+        // Populate database for demo. This would ideally be done by fetching titles from a database,
+        // Possibly an API, depending on the use case.
         private void PopulateDatabase() {
             library.Populate();
         }
@@ -58,7 +59,7 @@ namespace netflix {
         private void UpdateTitles() {
             bool isShow = SelectedTitle is Show;
 
-            pictureBox1.Image = SelectedTitle.Poster;
+            pictureBox1.Image = SelectedTitle.Thumbnail;
 
             info_box.Text += $"Name: {SelectedTitle.Name}\n";
             info_box.Text += $"Average Rating: {SelectedTitle.AverageRating}\n";

@@ -3,10 +3,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
-using netflix.Classes.Movies;
-using netflix.Classes.Shows;
+using netflix.Elements.Movies;
+using netflix.Elements.Shows;
 
-namespace netflix.Classes {
+namespace netflix.Elements {
     public class Library : List<Title> {
         public Title GetTitleByName(string name) {
             return this.First(x => x.Name == name);

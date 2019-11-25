@@ -1,4 +1,4 @@
-﻿namespace netflix.Classes {
+﻿namespace netflix.Elements {
     public class Rating {
         public Rating(decimal value) => Value = value;
 

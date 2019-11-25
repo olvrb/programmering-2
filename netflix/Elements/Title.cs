@@ -3,31 +3,32 @@ using System.Drawing;
 using System.Linq;
 using UnogsClient;
 
-namespace netflix.Classes {
+namespace netflix.Elements {
     public class Title {
         protected List<Rating> ratings;
 
         public Title(string name, List<Rating> ratings, Image image, string description = "", string netflixId = "") {
             Name = name;
             this.ratings = ratings;
-            Poster = image;
+            Thumbnail = image;
             Description = description;
             NetflixId = netflixId;
         }
 
         public Title(string name) {
+            // Create new Title by fetching data from the Netflix API.
             UnogsClient.UnogsClient client = new UnogsClient.UnogsClient();
             ApiItem item = client.GetTitleByName(name);
             Name = item.Title;
             ratings = new List<Rating> {new Rating(decimal.Parse(item.Rating))};
-            Poster = Library.ImageFromUrl(item.Image);
+            Thumbnail = Library.ImageFromUrl(item.Image);
             NetflixId = item.NetflixId;
             Description = item.Synopsis;
         }
 
         public string Description { get; protected set; }
         public string Name { get; protected set; }
-        public Image Poster { get; protected set; }
+        public Image Thumbnail { get; protected set; }
         public string NetflixId { get; protected set; }
 
         public IReadOnlyList<Rating> Ratings => ratings.AsReadOnly();
