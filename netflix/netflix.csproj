@@ -59,7 +59,7 @@
     <Compile Include="AddTitleDialog.Designer.cs">
       <DependentUpon>AddTitleDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Library.cs" />
+    <Compile Include="Elements\Library.cs" />
     <Compile Include="Elements\Shows\Episode.cs" />
     <Compile Include="Elements\Movies\Movie.cs" />
     <Compile Include="Elements\Rating.cs" />
