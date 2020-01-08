@@ -7,13 +7,12 @@ using netflix.Elements.Movies;
 using netflix.Elements.Shows;
 
 namespace netflix.Elements {
+
+    // Inherit from List<Title>, since every library is essentially a list of movies.
     public class Library : List<Title>
     {
-        public Title Title {
-            get => default;
-            set {
-            }
-        }
+        public Title Title { get; }
+        
 
         public Title GetTitleByName(string name) {
             return this.First(x => x.Name == name);
@@ -23,6 +22,9 @@ namespace netflix.Elements {
             Add(title);
         }
 
+
+        // Populate database for demo. This would ideally be done by fetching titles from a database,
+        // Possibly an API, depending on the use case.
         public void Populate() {
             AddTitle(new Show("Brooklyn Nine Nine",
                 new List<Rating> {new Rating(10)},
