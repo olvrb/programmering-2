@@ -33,7 +33,7 @@ namespace eprov.Heroes.Heroes
 
         }
 
-        // An assassin will always kill everyone, no implemented
+        // An assassin will always kill everyone, not implemented
         public override void Attack(Hero enemy)
         {
             throw new NotImplementedException();
