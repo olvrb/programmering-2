@@ -15,6 +15,10 @@ namespace eprov.School
         private readonly List<Classroom.Classroom> classrooms = new List<Classroom.Classroom> { };
 
         public School() {
+            // I was gonna have a base-class for Classroom, 
+            // Then a sub-class for each room, but considering we aren't actually using the rooms to walk around in,
+            // and they don't really need any differing properties or methods
+
             // Add all the desired rooms
             classrooms.AddRange(new[] {
                 new Classroom.Classroom("MusicRoom", 15),
