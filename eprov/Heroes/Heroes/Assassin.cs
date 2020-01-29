@@ -27,4 +27,16 @@ namespace eprov.Heroes.Heroes
             enemy.Kill();
         }
     }
+
+    public class SuperSuperAssassin : SuperAssassin {
+        public SuperSuperAssassin(string name) : base(name) {
+
+        }
+
+        // An assassin will always kill everyone, no implemented
+        public override void Attack(Hero enemy)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
