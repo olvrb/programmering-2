@@ -12,6 +12,7 @@ namespace eprov
         static void Main(string[] args)
         {
             List<Hero> heroes = new List<Hero>();
+
             Console.Write("Enter name for Assassin: ");
             Assassin assassin = new Assassin(Console.ReadLine());
 

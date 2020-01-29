@@ -50,8 +50,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="School\Classroom\Classroom.cs" />
-    <Compile Include="School\Classroom\Rooms\MusicRoom.cs" />
-    <Compile Include="School\Classroom\Rooms\Reception.cs" />
     <Compile Include="School\School.cs" />
   </ItemGroup>
   <ItemGroup>
