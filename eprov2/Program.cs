@@ -10,15 +10,10 @@ namespace eprov2
     class Program
     {
         static void Main(string[] args) {
-            List<Car> cars = new List<Car>();
             int amountOfCarsToInitialize = ReadPositiveNumber("How many cars should be created? ");
 
             // Add an amount of cars to list.
-            for (int i = 0; i < amountOfCarsToInitialize; i++) {
-                // 50% chance of it being a CleanCar or a ContrabandCar
-                if (Car.Generator.Next(100) > 50) cars.Add(new CleanCar());
-                else cars.Add(new ContrabandCar());
-            }
+           List<Car> cars = GenerateCars(amountOfCarsToInitialize);
 
             while (true) {
                 int carIndex = ReadPositiveNumber("Which car would you want to look at (starting from 0)? ");
@@ -41,6 +36,17 @@ namespace eprov2
                         : $"That car is {(indexedCar.Examine() ? "clean" : "not clean")}");
                 }
             }
+        }
+
+        private static List<Car> GenerateCars(int amountOfCarsToInitialize) {
+            List<Car> cars = new List<Car>();
+            for (int i = 0; i < amountOfCarsToInitialize; i++) {
+                // 50% chance of it being a CleanCar or a ContrabandCar
+                if (Car.Generator.Next(100) > 50) cars.Add(new CleanCar());
+                else cars.Add(new ContrabandCar());
+            }
+
+            return cars;
         }
 
         private static int ReadPositiveNumber(string askString) {
