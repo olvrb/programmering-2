@@ -25,7 +25,7 @@ namespace eprov2
                 try {
                     indexedCar = cars[carIndex];
                 }
-                catch (Exception e) {
+                catch (Exception) {
                     Console.WriteLine("Invalid car.");
                 }
                 // Check if car is initialized to prevent null ref exception.
