@@ -10,5 +10,11 @@ namespace pedalboard.Models.Knobs {
         public string Selected => Selections[SelectedIndex];
 
         private int SelectedIndex = 0;
+
+        public void SetSelected(string selection) {
+            SelectedIndex = Selections.FindIndex(x => x.Contains(selection));
+        }
+
+        public override string FormatValue() => Selected;
     }
 }

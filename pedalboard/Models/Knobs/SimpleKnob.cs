@@ -9,5 +9,6 @@ namespace pedalboard.Models.Knobs
     class SimpleKnob : Knob {
         public int MaxValue;
         public int Value;
+        public override string FormatValue() => Value.ToString();
     }
 }

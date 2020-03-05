@@ -1,7 +1,9 @@
 ﻿namespace pedalboard.Models.Knobs
 {
-    class Knob : BaseEntity
+    abstract class Knob : BaseEntity
     {
         public Pedal Pedal { get; set; }
+
+        public abstract string FormatValue();
     }
 }
