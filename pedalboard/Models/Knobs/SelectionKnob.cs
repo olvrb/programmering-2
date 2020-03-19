@@ -15,6 +15,6 @@ namespace pedalboard.Models.Knobs {
             SelectedIndex = Selections.FindIndex(x => x.Contains(selection));
         }
 
-        public override string FormatValue() => Selected;
+        public override string FormatValue() => $"{Name}: {Selected}";
     }
 }

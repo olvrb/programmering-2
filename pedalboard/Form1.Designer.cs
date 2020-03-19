@@ -31,9 +31,9 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.Pedalboard_text = new System.Windows.Forms.RichTextBox();
             this.Pedal_text = new System.Windows.Forms.RichTextBox();
-            this.pedalinfo_text = new System.Windows.Forms.RichTextBox();
             this.Pedalboard_list = new System.Windows.Forms.ListBox();
             this.Pedal_list = new System.Windows.Forms.ListBox();
+            this.pedalinfo_text = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // Pedalboard_text
@@ -54,14 +54,6 @@
             this.Pedal_text.TabIndex = 3;
             this.Pedal_text.Text = "Knobs";
             // 
-            // pedalinfo_text
-            // 
-            this.pedalinfo_text.Location = new System.Drawing.Point(400, 13);
-            this.pedalinfo_text.Name = "pedalinfo_text";
-            this.pedalinfo_text.Size = new System.Drawing.Size(388, 425);
-            this.pedalinfo_text.TabIndex = 4;
-            this.pedalinfo_text.Text = "";
-            // 
             // Pedalboard_list
             // 
             this.Pedalboard_list.FormattingEnabled = true;
@@ -79,6 +71,14 @@
             this.Pedal_list.Size = new System.Drawing.Size(187, 381);
             this.Pedal_list.TabIndex = 6;
             this.Pedal_list.SelectedIndexChanged += new System.EventHandler(this.Pedal_list_SelectedIndexChanged);
+            // 
+            // pedalinfo_text
+            // 
+            this.pedalinfo_text.Location = new System.Drawing.Point(399, 13);
+            this.pedalinfo_text.Name = "pedalinfo_text";
+            this.pedalinfo_text.Size = new System.Drawing.Size(389, 425);
+            this.pedalinfo_text.TabIndex = 4;
+            this.pedalinfo_text.Text = "";
             // 
             // Form1
             // 
@@ -102,9 +102,9 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.RichTextBox Pedalboard_text;
         private System.Windows.Forms.RichTextBox Pedal_text;
-        private System.Windows.Forms.RichTextBox pedalinfo_text;
         private System.Windows.Forms.ListBox Pedalboard_list;
         private System.Windows.Forms.ListBox Pedal_list;
+        private System.Windows.Forms.RichTextBox pedalinfo_text;
     }
 }
 
