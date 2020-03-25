@@ -16,13 +16,17 @@ namespace pedalboard
 {
     public partial class Form1 : Form
     {
-
-        Pedalboard pedalboard = new Pedalboard();
-        Pedal selectedPedal => Pedalboard_list.SelectedIndex > -1 ? pedalboard.Pedals[Pedalboard_list.SelectedIndex] : null;
+        PedalboardLibrary pedalboardLibrary = new PedalboardLibrary();
+        Pedalboard pedalboard;
+        Pedalboard selectedPedalboard => Pedalboard_list.SelectedIndex > -1 ? pedalboardLibrary.Pedalboards.First(x => x.Name == Pedalboard_list.GetItemText(Pedalboard_list.SelectedItem)) : null;
 
 
         private void Populate()
         {
+            pedalboard = new Pedalboard();
+            pedalboard.Name = "my board";
+
+
             Pedal pedal = new Pedal();
             pedal.AddKnob(new SimpleKnob
             {
@@ -55,6 +59,8 @@ namespace pedalboard
             pedal2.Name = "Big Muff";
             pedal2.On = true;
             pedalboard.Pedals.Add(pedal2);
+
+            pedalboardLibrary.Add(pedalboard);
         }
         public Form1()
         {
@@ -65,52 +71,26 @@ namespace pedalboard
         private void Form1_Load(object sender, EventArgs e)
         {
             Populate();
-            UpdatePedals();
-            UpdateKnobsInfo();
+            LoadPedalboards();
         }
 
-        private void Pedalboard_list_SelectedIndexChanged(object sender, EventArgs e)
+        private void LoadPedalboards()
         {
-            UpdateKnobs();
-        }
-
-        private void UpdateKnobs()
-        {
-            if (selectedPedal is null) return;
-            foreach (Knob knob in selectedPedal.Knobs)
+            foreach (var Pedalboard in pedalboardLibrary.Pedalboards)
             {
-                Pedal_list.Items.Add(knob.Name);
+                Pedalboard_list.Items.Add(Pedalboard.Name);
             }
-        }
-
-        private void UpdatePedals()
-        {
-            foreach (Pedal pedal in pedalboard.Pedals)
-            {
-                // Pedalboard_list.Items.Add(pedal.Name);
-            }
-        }
-
-        private void Pedal_list_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateKnobsInfo();
         }
 
         private void UpdateKnobsInfo()
         {
             pedalinfo_text.Clear();
-            pedalinfo_text.Text = pedalboard.Format();
+            pedalinfo_text.Text = selectedPedalboard.Format();
         }
 
-        private void UpdateKnobsInfoDeprecated()
+        private void Pedalboard_list_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selectedPedal is null) return;
-            pedalinfo_text.Clear();
-
-            int index = Pedal_list.SelectedIndex;
-            Knob selectedKnob = selectedPedal.Knobs[index];
-
-            pedalinfo_text.Text += $"Value: {selectedKnob.FormatValue()}\n";
+            UpdateKnobsInfo();
         }
     }
 }

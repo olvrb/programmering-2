@@ -56,6 +56,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\PedalboardLibrary.cs" />
     <Compile Include="Models\Knobs\Knob.cs" />
     <Compile Include="Models\Knobs\SelectionKnob.cs" />
     <Compile Include="Models\Knobs\SimpleKnob.cs" />

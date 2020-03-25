@@ -13,9 +13,31 @@ namespace pedalboard.Models
 
         public bool On { get; set; }
 
-        public Pedal AddKnob(Knob knob) {
+        public Pedal AddKnob(Knob knob)
+        {
             Knobs.Add(knob);
             return this;
+        }
+
+        public string FormatKnobs()
+        {
+            string result = "";
+
+            // Cache knob, since we're gonna be accessing it a lot
+            Knob lastKnob = Knobs.Last();
+            foreach (Knob knob in Knobs)
+            {
+                if (knob == lastKnob)
+                {
+                    result += $"{knob.FormatValue()}";
+                }
+                else
+                {
+                    result += $"{knob.FormatValue()}, "; 
+                }
+            }
+
+            return result;
         }
     }
 }

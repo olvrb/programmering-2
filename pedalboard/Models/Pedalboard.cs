@@ -11,7 +11,7 @@ namespace pedalboard.Models
 {
     class Pedalboard : BaseEntity
     {
-        public List<Pedal> Pedals { get; set; } = new List<Pedal>();
+        public HashSet<Pedal> Pedals { get; set; } = new HashSet<Pedal>();
 
         public Pedalboard AddPedal(Pedal pedal) {
             Pedals.Add(pedal);
@@ -21,20 +21,10 @@ namespace pedalboard.Models
         // TODO: remove trailing comma
         public string Format()
         {
-            string result = "";
-
-            foreach (Pedal pedal in Pedals)
-            {
-                Debug.WriteLine(pedal.Name);
-                result += $"{pedal.Name} (";
-
-                foreach (Knob knob in pedal.Knobs)
-                {
-                   
-                    result += $"{knob.FormatValue()}, ";
-                }
-                result += ")";
-            }
+            string result = Pedals
+                .Select(x => $"{x.Name} ({x.FormatKnobs()})")
+                .Aggregate((x, y) => $"{x}, {y}");
+            
 
 
             return result;
