@@ -62,6 +62,9 @@
     <Compile Include="Models\Knobs\SimpleKnob.cs" />
     <Compile Include="Models\Pedal.cs" />
     <Compile Include="Models\Pedalboard.cs" />
+    <Compile Include="Populate.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

@@ -18,50 +18,11 @@ namespace pedalboard
     {
         PedalboardLibrary pedalboardLibrary = new PedalboardLibrary();
         Pedalboard pedalboard;
+        Pedalboard pedalboard2;
         Pedalboard selectedPedalboard => Pedalboard_list.SelectedIndex > -1 ? pedalboardLibrary.Pedalboards.First(x => x.Name == Pedalboard_list.GetItemText(Pedalboard_list.SelectedItem)) : null;
 
 
-        private void Populate()
-        {
-            pedalboard = new Pedalboard();
-            pedalboard.Name = "my board";
-
-
-            Pedal pedal = new Pedal();
-            pedal.AddKnob(new SimpleKnob
-            {
-                Name = "Volume",
-                MaxValue = 100,
-                Value = 50,
-                Pedal = pedal
-            });
-            pedal.AddKnob(new SelectionKnob
-            {
-                Name = "Type",
-                Selections = new List<string> {
-                    "Tape",
-                    "Loop"
-                },
-                Pedal = pedal
-            });
-
-            pedal.Name = "Flashback";
-            pedal.On = true;
-            pedalboard.Pedals.Add(pedal);
-
-
-            Pedal pedal2 = new Pedal();
-
-            pedal2.AddKnob(new SimpleKnob { Pedal = pedal2, MaxValue = 100, Value = 50, Name = "Volume" });
-            pedal2.AddKnob(new SimpleKnob { Pedal = pedal2, MaxValue = 100, Value = 50, Name = "Tone" });
-            pedal2.AddKnob(new SimpleKnob { Pedal = pedal2, MaxValue = 100, Value = 50, Name = "Sustain" });
-
-            pedal2.Name = "Big Muff";
-            pedal2.On = true;
-            pedalboard.Pedals.Add(pedal2);
-
-            pedalboardLibrary.Add(pedalboard);
-        }
+        
         public Form1()
         {
             InitializeComponent();
