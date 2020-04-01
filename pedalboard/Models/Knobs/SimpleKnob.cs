@@ -9,6 +9,8 @@ namespace pedalboard.Models.Knobs
     class SimpleKnob : Knob {
         public int MaxValue;
         public int Value;
+
+        // Implement FormatValue method
         public override string FormatValue() => $"{Name}: {Value}";
     }
 }

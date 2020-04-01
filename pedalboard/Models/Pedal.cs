@@ -13,6 +13,8 @@ namespace pedalboard.Models
 
         public bool On { get; set; }
 
+
+        // Just a useless wrapper
         public Pedal AddKnob(Knob knob)
         {
             Knobs.Add(knob);
@@ -27,6 +29,7 @@ namespace pedalboard.Models
             Knob lastKnob = Knobs.Last();
             foreach (Knob knob in Knobs)
             {
+                // If it's the last in the array, we don't want a comma
                 if (knob == lastKnob)
                 {
                     result += $"{knob.FormatValue()}";

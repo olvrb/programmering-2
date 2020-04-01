@@ -8,8 +8,11 @@ namespace pedalboard.Models
 {
     class PedalboardLibrary : BaseEntity
     {
+        // HashSet, don't want duplicates
         public HashSet<Pedalboard> Pedalboards = new HashSet<Pedalboard>();
 
+
+        // Useless wrapper 
         public PedalboardLibrary Add(Pedalboard pedalboard)
         {
             Pedalboards.Add(pedalboard);

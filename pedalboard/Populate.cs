@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace pedalboard
 {
+    // Split into another file just for organization
     partial class Form1
     {
         private void Populate()

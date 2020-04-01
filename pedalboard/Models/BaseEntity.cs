@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace pedalboard.Models {
     class BaseEntity {
         public BaseEntity() {
+            // Generate a unique ID
             Id = Guid.NewGuid();
         }
 
