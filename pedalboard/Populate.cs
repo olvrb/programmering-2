@@ -37,7 +37,7 @@ namespace pedalboard
                 Pedal = pedal
             });
 
-            pedal.Name = "Flashback";
+            pedal.Name = "Delay";
             pedal.On = true;
             pedalboard.Pedals.Add(pedal);
 
@@ -48,7 +48,7 @@ namespace pedalboard
             pedal2.AddKnob(new SimpleKnob { Pedal = pedal2, MaxValue = 100, Value = 50, Name = "Tone" });
             pedal2.AddKnob(new SimpleKnob { Pedal = pedal2, MaxValue = 100, Value = 50, Name = "Sustain" });
 
-            pedal2.Name = "Big Muff";
+            pedal2.Name = "Fuzz";
             pedal2.On = true;
             pedalboard.Pedals.Add(pedal2);
             pedalboard2.Pedals.Add(pedal2);

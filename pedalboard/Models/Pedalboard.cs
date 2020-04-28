@@ -21,10 +21,11 @@ namespace pedalboard.Models
         public string Format()
         {
             // Format pedals like  pedal3 <- pedal 2 <- pedal1
-            string result = Pedals
+            string result = "amp <- ";
+            result += Pedals
                 .Select(x => $"{x.Name} ({x.FormatKnobs()})")
                 .Aggregate((x, y) => $"{x} <- {y}");
-
+            result += " <- line in";
             return result;
         }
     }

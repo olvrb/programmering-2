@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace pedalboard.Models {
-    class BaseEntity {
-        public BaseEntity() {
+    abstract class BaseEntity {
+        protected BaseEntity() {
             // Generate a unique ID
             Id = Guid.NewGuid();
         }

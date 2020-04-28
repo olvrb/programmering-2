@@ -25,12 +25,10 @@ namespace pedalboard.Models
         {
             string result = "";
 
-            // Cache knob, since we're gonna be accessing it a lot
-            Knob lastKnob = Knobs.Last();
             foreach (Knob knob in Knobs)
             {
                 // If it's the last in the array, we don't want a comma
-                if (knob == lastKnob)
+                if (knob == Knobs.Last())
                 {
                     result += $"{knob.FormatValue()}";
                 }
