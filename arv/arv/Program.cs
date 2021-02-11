@@ -6,6 +6,10 @@ namespace arv
     {
         static void Main(string[] args)
         {
+            // Example usage
+            Block b = new FalseBlock();
+            Block c = new TrueBlock();
+            Console.WriteLine($"{b.x} {b.y}");
             Console.WriteLine("Hello World!");
         }
     }
